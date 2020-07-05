@@ -4,10 +4,15 @@ if (empty($status)) {
     $query = $this->db->query("SELECT *
                                 FROM laporan_mobil
                                 ");
+} elseif ($status == 6) {
+    $query = $this->db->query("SELECT *
+                                FROM laporan_mobil
+                                WHERE status < $status
+                                ");
 } else {
     $query = $this->db->query("SELECT *
                                 FROM laporan_mobil
-                                WHERE status = '$status'
+                                WHERE status is null
                                 ");
 }
 
