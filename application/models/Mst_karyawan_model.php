@@ -84,7 +84,10 @@ class Mst_karyawan_model extends CI_Model
     public function delete($id)
     {
         $this->db->where($this->id, $id);
-        $this->db->update('aktif', 0);
+        $data = array(
+            'aktif' => 0,
+        );
+        $this->db->update($this->table, $data);
     }
 
 }

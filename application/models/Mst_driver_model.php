@@ -80,8 +80,10 @@ class Mst_driver_model extends CI_Model
     public function delete($id)
     {
         $this->db->where($this->id, $id);
-        $this->db->delete($this->table);
-        $this->db->update('aktif', 0);
+        $data = array(
+            'aktif' => 0,
+        );
+        $this->db->update($this->table, $data);
     }
 
 }
