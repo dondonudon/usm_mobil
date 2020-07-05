@@ -33,7 +33,7 @@ if ($is_driver == '1') {
 		<tr><td>Jenis</td><td><?php echo $jenis; ?></td></tr>
 		<tr><td>Mobil</td><td><?php echo select2_dinamis('id_mobil', 'mst_mobil', 'nopol', 'id', 'Mobil') ?></td></tr>
 		<tr><td>Bahan Bakar</td><td><?php echo $is_bbm; ?></td></tr>
-		<tr><td>Kupon</td><td><input type="text" name="kupon_bbm" id="kupon_bbm"></td></tr>
+		<tr><td>Kupon</td><td><input type="text" name="kupon_bbm" id="kupon_bbm" disabled></td></tr>
 		<tr><td>Pakai Driver</td><td><?php echo $iss_driver; ?></td></tr>
 		<tr><td>Driver</td><td><?php echo select2_dinamis('id_driver', 'mst_driver', 'nama', 'id', 'Driver') ?></td></tr>
 	    <!-- <tr><td>Datetime</td><td><?php echo $datetime; ?></td></tr> -->
@@ -53,7 +53,7 @@ var iss_driver = $('#iss_driver').val();
 
 // cek value is_bbm
 if(is_bbm === "Ya"){
-	document.getElementById('kupon_bbm').disabled = true;
+	document.getElementById('kupon_bbm').disabled = false;
 }
 // cek value iss_driver
 if(iss_driver === "Tidak"){
