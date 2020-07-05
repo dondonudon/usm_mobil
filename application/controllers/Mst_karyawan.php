@@ -10,7 +10,7 @@ class Mst_karyawan extends CI_Controller
     {
         parent::__construct();
         is_login();
-        $this->session->set_flashdata('title', 'Daftar Driver | PT PLN');
+        $this->session->set_flashdata('title', 'Daftar Karyawan | PT PLN');
         $this->load->model('Mst_karyawan_model');
         $this->load->library('form_validation');
         $this->load->library('datatables');
@@ -35,11 +35,12 @@ class Mst_karyawan extends CI_Controller
                 'id' => $row->id,
                 'nama' => $row->nama,
                 'jabatan' => $row->jabatan,
+                'datetime' => $row->datetime,
             );
             $this->template->load('template', 'mst_karyawan/mst_karyawan_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('Mst_karyawan'));
+            redirect(site_url('mst_karyawan'));
         }
     }
 
@@ -47,10 +48,11 @@ class Mst_karyawan extends CI_Controller
     {
         $data = array(
             'button' => 'Create',
-            'action' => site_url('Mst_karyawan/create_action'),
+            'action' => site_url('mst_karyawan/create_action'),
             'id' => set_value('id'),
             'nama' => set_value('nama'),
             'jabatan' => set_value('jabatan'),
+            'datetime' => set_value('datetime'),
         );
         $this->template->load('template', 'mst_karyawan/mst_karyawan_form', $data);
     }
@@ -65,11 +67,12 @@ class Mst_karyawan extends CI_Controller
             $data = array(
                 'nama' => $this->input->post('nama', true),
                 'jabatan' => $this->input->post('jabatan', true),
+                'datetime' => $this->input->post('datetime', true),
             );
 
             $this->Mst_karyawan_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success 2');
-            redirect(site_url('Mst_karyawan'));
+            redirect(site_url('mst_karyawan'));
         }
     }
 
@@ -80,15 +83,16 @@ class Mst_karyawan extends CI_Controller
         if ($row) {
             $data = array(
                 'button' => 'Update',
-                'action' => site_url('Mst_karyawan/update_action'),
+                'action' => site_url('mst_karyawan/update_action'),
                 'id' => set_value('id', $row->id),
                 'nama' => set_value('nama', $row->nama),
-                'jabatan' => set_value('nama', $row->jabatan),
+                'jabatan' => set_value('jabatan', $row->jabatan),
+                'datetime' => set_value('datetime', $row->datetime),
             );
             $this->template->load('template', 'mst_karyawan/mst_karyawan_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('Mst_karyawan'));
+            redirect(site_url('mst_karyawan'));
         }
     }
 
@@ -102,11 +106,12 @@ class Mst_karyawan extends CI_Controller
             $data = array(
                 'nama' => $this->input->post('nama', true),
                 'jabatan' => $this->input->post('jabatan', true),
+                'datetime' => $this->input->post('datetime', true),
             );
 
             $this->Mst_karyawan_model->update($this->input->post('id', true), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('Mst_karyawan'));
+            redirect(site_url('mst_karyawan'));
         }
     }
 
@@ -117,16 +122,18 @@ class Mst_karyawan extends CI_Controller
         if ($row) {
             $this->Mst_karyawan_model->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
-            redirect(site_url('Mst_karyawan'));
+            redirect(site_url('mst_karyawan'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('Mst_karyawan'));
+            redirect(site_url('mst_karyawan'));
         }
     }
 
     public function _rules()
     {
         $this->form_validation->set_rules('nama', 'nama', 'trim|required');
+        $this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
+        // $this->form_validation->set_rules('datetime', 'datetime', 'trim|required');
 
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -135,8 +142,8 @@ class Mst_karyawan extends CI_Controller
     public function excel()
     {
         $this->load->helper('exportexcel');
-        $namaFile = "Mst_karyawan.xls";
-        $judul = "Mst_karyawan";
+        $namaFile = "mst_karyawan.xls";
+        $judul = "mst_karyawan";
         $tablehead = 0;
         $tablebody = 1;
         $nourut = 1;
@@ -155,6 +162,8 @@ class Mst_karyawan extends CI_Controller
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
         xlsWriteLabel($tablehead, $kolomhead++, "Nama");
+        xlsWriteLabel($tablehead, $kolomhead++, "Jabatan");
+        xlsWriteLabel($tablehead, $kolomhead++, "Datetime");
 
         foreach ($this->Mst_karyawan_model->get_all() as $data) {
             $kolombody = 0;
@@ -162,6 +171,8 @@ class Mst_karyawan extends CI_Controller
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
             xlsWriteLabel($tablebody, $kolombody++, $data->nama);
+            xlsWriteLabel($tablebody, $kolombody++, $data->jabatan);
+            xlsWriteLabel($tablebody, $kolombody++, $data->datetime);
 
             $tablebody++;
             $nourut++;
@@ -176,5 +187,5 @@ class Mst_karyawan extends CI_Controller
 /* End of file Mst_karyawan.php */
 /* Location: ./application/controllers/Mst_karyawan.php */
 /* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2020-07-03 03:30:17 */
+/* Generated by Harviacode Codeigniter CRUD Generator 2020-07-06 03:11:09 */
 /* http://harviacode.com */

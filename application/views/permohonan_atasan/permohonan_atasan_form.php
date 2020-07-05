@@ -35,6 +35,7 @@ if ($is_driver == '1') {
 		<input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_users']; ?>">
 	    <tr><td></td><td><input type="hidden" name="id" value="<?php echo $id; ?>" />
 	    <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> <?php echo $button ?></button>
+		<button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> <?php echo $button1 ?></button>
 	    <a href="<?php echo site_url('permohonan_atasan') ?>" class="btn btn-info"><i class="fa fa-sign-out"></i> Kembali</a></td></tr>
 	</table></form>        </div>
 </div>

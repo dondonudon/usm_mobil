@@ -5,7 +5,7 @@
                 <div class="box box-warning box-solid">
 
                     <div class="box-header">
-                        <h3 class="box-title">KELOLA DATA MST_DRIVER</h3>
+                        <h3 class="box-title">KELOLA DATA MST_KARYAWAN</h3>
                     </div>
 
         <div class="box-body">
@@ -16,8 +16,9 @@
             <thead>
                 <tr>
                     <th width="30px">No</th>
-            <th>Nama</th>
-            <th>Jabatan</th>
+		    <th>Nama</th>
+		    <th>Jabatan</th>
+		    <!-- <th>Datetime</th> -->
 		    <th width="200px">Action</th>
                 </tr>
             </thead>
