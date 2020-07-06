@@ -11,7 +11,7 @@
 
 	    <tr><td width='200'>No <?php echo form_error('notrans') ?></td><td><input type="text" class="form-control" name="notrans" id="notrans" placeholder="Notrans" value="<?php echo notrans(); ?>" readonly/></td></tr>
 		<tr><td width='200'>Karyawan <?php echo form_error('id_karyawan') ?></td>
-		<td><?php echo select2_dinamis('id_karyawan', 'mst_karyawan', 'nama', 'id', 'Karyawan') ?></td></tr>
+		<td><?php echo select2_dinamis_id('id_karyawan', 'mst_karyawan', 'nama', 'id', 'Karyawan', 'aktif', 1) ?></td></tr>
 	    <tr><td width='200'>Tanggal <?php echo form_error('tanggal') ?></td><td><input type="date" class="form-control" name="tanggal" id="tanggal" placeholder="Tanggal" value="<?php echo $tanggal; ?>" /></td></tr>
 	    <tr><td width='200'>Jumlah Pengikut <?php echo form_error('pengikut') ?></td><td><input type="text" class="form-control" name="pengikut" id="pengikut" placeholder="Pengikut" value="<?php echo $pengikut; ?>" /></td></tr>
 	    <tr><td width='200'>Tujuan <?php echo form_error('tujuan') ?></td><td><input type="text" class="form-control" name="tujuan" id="tujuan" placeholder="Tujuan" value="<?php echo $tujuan; ?>" /></td></tr>
