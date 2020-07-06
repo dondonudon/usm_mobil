@@ -1,10 +1,13 @@
 ### Autehntifikasi
-Untuk melakukan proses login silahkan gunakan akun default berikut :<br>
-Username : super<br>
-Password : password<br>
-<br>
-Username : admin<br>
-Password : password
+Untuk melakukan proses login silahkan gunakan akun berikut :<br>
+Username : <br>
+user <br>
+atasan <br>
+admin <br>
+spv <br>
+security <br>
+
+Password : password <br>
 
 ## Fitur Fitur :
 
