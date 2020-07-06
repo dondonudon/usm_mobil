@@ -1,13 +1,13 @@
 ### Autehntifikasi
 Untuk melakukan proses login silahkan gunakan akun berikut :<br>
-Username :
-user
-atasan
-admin
-spv
-security
+Username : <br>
+user <br>
+atasan <br>
+admin <br>
+spv <br>
+security <br>
 
-Password : password
+Password : password <br>
 
 ## Fitur Fitur :
 
