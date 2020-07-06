@@ -74,15 +74,15 @@ function rename_string_is_driver($string)
 function rename_string_status($string)
 {
     if ($string == '1') {
-        $status = 'User';
-    } elseif ($string == '2') {
         $status = 'Atasan';
-    } elseif ($string == '3') {
+    } elseif ($string == '2') {
         $status = 'Admin';
-    } elseif ($string == '4') {
+    } elseif ($string == '3') {
         $status = 'SPV';
-    } elseif ($string == '5') {
+    } elseif ($string == '4') {
         $status = 'Security';
+    } elseif ($string == '5') {
+        $status = 'Selesai';
     } else {
         $status = '';
     }
