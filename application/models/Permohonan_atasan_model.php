@@ -118,7 +118,7 @@ class Permohonan_atasan_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $data = array(
-            'status' => 9,
+            'status' => 1,
         );
         $this->db->update($this->table, $data);
     }
