@@ -17,7 +17,7 @@ class Permohonan_security_model extends CI_Model
     }
 
     // datatables
-    public function json()
+    public function json_keluar()
     {
         $this->datatables->select('permohonan.id,permohonan.notrans,permohonan.id_karyawan,permohonan.tanggal,permohonan.pengikut,
         permohonan.tujuan,permohonan.keterangan,permohonan.bbm,permohonan.is_driver,
@@ -35,6 +35,26 @@ class Permohonan_security_model extends CI_Model
         return $this->datatables->generate();
     }
 
+    public function json_masuk()
+    {
+        $this->datatables->select('permohonan.id,permohonan.notrans,permohonan.id_karyawan,permohonan.tanggal,permohonan.pengikut,
+        permohonan.tujuan,permohonan.keterangan,permohonan.bbm,permohonan.is_driver,
+        permohonan.status,permohonan.datetime,
+        mst_karyawan.nama');
+        $this->datatables->from('permohonan');
+        $this->datatables->where('status', 5);
+        $this->datatables->where('masuk_jam =', null);
+        $this->datatables->where('keluar_jam !=', null);
+        //add this line for join
+        $this->datatables->join('mst_karyawan', 'permohonan.id_karyawan = mst_karyawan.id');
+        $this->datatables->add_column('bbm', '$1', 'rename_string_is_bbm(bbm)');
+        $this->datatables->add_column('is_driver', '$1', 'rename_string_is_driver(is_driver)');
+        $this->datatables->add_column('status', '$1', 'rename_string_status(status)');
+        $this->datatables->add_column('action', anchor(site_url('permohonan_security/update_masuk/$1'), '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm')) . "
+                ", 'id');
+        return $this->datatables->generate();
+    }
+
     // get all
     public function get_all()
     {
@@ -47,7 +67,7 @@ class Permohonan_security_model extends CI_Model
     {
         $query = $this->db->select('permohonan.id, permohonan.notrans, permohonan.id_karyawan, permohonan.tanggal, permohonan.pengikut,
         permohonan.tujuan, permohonan.keterangan, permohonan.bbm, permohonan.is_driver, permohonan.datetime,
-        permohonan.id_mobil, permohonan.kupon_bbm,
+        permohonan.id_mobil, permohonan.kupon_bbm, permohonan.keluar_jam, permohonan.masuk_jam,
         permohonan.status, mst_karyawan.nama, mst_karyawan.jabatan,
         mst_mobil.nopol, mst_driver.nama as driver')
             ->from('permohonan')

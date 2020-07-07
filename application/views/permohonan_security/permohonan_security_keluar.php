@@ -3,7 +3,7 @@
     <section class="content">
         <div class="box box-warning box-solid">
             <div class="box-header with-border">
-                <h3 class="box-title">INPUT DATA PERMOHONAN</h3>
+                <h3 class="box-title">INPUT DATA JAM KELUAR</h3>
             </div>
             <form action="<?php echo $action; ?>" method="post">
 <?php
@@ -36,7 +36,13 @@ if ($is_driver == '1') {
 		<tr><td>Pakai Driver</td><td><?php echo $iss_driver; ?></td></tr>
 		<tr><td>Driver</td><td><?php echo $id_driver; ?></td></tr>
 		<tr><td>Jam Keluar</td><td><input type="time" name="keluar_jam" id="keluar_jam"></td></tr>
-		<tr><td>Jam Masuk</td><td><input type="time" name="masuk_jam" id="masuk_jam"></td></tr>
+		<!-- <tr>
+			<td></td>
+			<td>
+			<input type="text" class="form-control" id="single-input" value="">
+			</td>
+		</tr> -->
+		<!-- <tr><td>Jam Masuk</td><td><input type="time" name="masuk_jam" id="masuk_jam"></td></tr> -->
 	    <!-- <tr><td>Datetime</td><td><?php echo $datetime; ?></td></tr> -->
 		<input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_users']; ?>">
 	    <tr><td></td><td><input type="hidden" name="id" value="<?php echo $id; ?>" />

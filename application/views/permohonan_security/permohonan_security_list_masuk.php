@@ -5,7 +5,7 @@
                 <div class="box box-warning box-solid">
 
                     <div class="box-header">
-                        <h3 class="box-title">KELOLA DATA PERMOHONAN</h3>
+                        <h3 class="box-title">KELOLA DATA PERMOHONAN JAM MASUK</h3>
                     </div>
 
         <div class="box-body">
@@ -71,7 +71,7 @@
                     processing: true,
                     serverSide: true,
                     scrollY:true,
-                    ajax: {"url": "permohonan_security/json", "type": "POST"},
+                    ajax: {"url": "json_masuk", "type": "POST"},
                     columns: [
                         {
                             "data": "id",
