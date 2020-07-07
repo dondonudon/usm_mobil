@@ -38,7 +38,7 @@ class Laporan_history extends CI_Controller
             $row[] = $customers->notrans;
             $row[] = $customers->tanggal;
             $row[] = $customers->nama_karyawan;
-            $row[] = $customers->status;
+            $row[] = rename_string_status($customers->status);
             // $row[] = '<a class="btn btn-sm btn-primary" href="' . base_url('laporan_history/print/' . $customers->notrans) . '" title="Edit" target="_blank">Print</a>';
             $data[] = $row;
 
