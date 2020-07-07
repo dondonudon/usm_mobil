@@ -39,7 +39,6 @@ class Permohonan_user extends CI_Controller
                 'pengikut' => $row->pengikut,
                 'tujuan' => $row->tujuan,
                 'keterangan' => $row->keterangan,
-                'jenis' => $row->jenis,
                 'bbm' => $row->bbm,
                 'kupon_bbm' => $row->kupon_bbm,
                 'id_mobil' => $row->id_mobil,

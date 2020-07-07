@@ -20,7 +20,7 @@ class Permohonan_atasan_model extends CI_Model
     public function json()
     {
         $this->datatables->select('permohonan.id,permohonan.notrans,permohonan.id_karyawan,permohonan.tanggal,permohonan.pengikut,
-        permohonan.tujuan,permohonan.keterangan,permohonan.jenis,permohonan.bbm,permohonan.is_driver,
+        permohonan.tujuan,permohonan.keterangan,permohonan.bbm,permohonan.is_driver,
         permohonan.status,permohonan.datetime,
         mst_karyawan.nama');
         $this->datatables->from('permohonan');
@@ -46,7 +46,7 @@ class Permohonan_atasan_model extends CI_Model
     public function get_by_id($id)
     {
         $query = $this->db->select('permohonan.id, permohonan.notrans, permohonan.id_karyawan, permohonan.tanggal, permohonan.pengikut,
-        permohonan.tujuan, permohonan.keterangan, permohonan.jenis, permohonan.bbm, permohonan.is_driver, permohonan.datetime,
+        permohonan.tujuan, permohonan.keterangan, permohonan.bbm, permohonan.is_driver, permohonan.datetime,
         permohonan.status, mst_karyawan.nama, mst_karyawan.jabatan')
             ->from('permohonan')
             ->join('mst_karyawan', 'permohonan.id_karyawan = mst_karyawan.id')
@@ -65,7 +65,6 @@ class Permohonan_atasan_model extends CI_Model
         $this->db->or_like('pengikut', $q);
         $this->db->or_like('tujuan', $q);
         $this->db->or_like('keterangan', $q);
-        $this->db->or_like('jenis', $q);
         $this->db->or_like('bbm', $q);
         $this->db->or_like('kupon_bbm', $q);
         $this->db->or_like('id_mobil', $q);
@@ -89,7 +88,6 @@ class Permohonan_atasan_model extends CI_Model
         $this->db->or_like('pengikut', $q);
         $this->db->or_like('tujuan', $q);
         $this->db->or_like('keterangan', $q);
-        $this->db->or_like('jenis', $q);
         $this->db->or_like('bbm', $q);
         $this->db->or_like('kupon_bbm', $q);
         $this->db->or_like('id_mobil', $q);

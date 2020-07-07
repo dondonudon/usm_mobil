@@ -30,7 +30,6 @@ if ($is_driver == '1') {
 	    <tr><td>Pengikut</td><td><?php echo $pengikut; ?></td></tr>
 	    <tr><td>Tujuan</td><td><?php echo $tujuan; ?></td></tr>
 	    <tr><td>Keterangan</td><td><?php echo $keterangan; ?></td></tr>
-		<tr><td>Jenis</td><td><?php echo $jenis; ?></td></tr>
 		<tr><td>Mobil</td><td><?php echo select2_dinamis_id('id_mobil', 'mst_mobil', 'nopol', 'id', 'Mobil', 'aktif', 1) ?></td></tr>
 		<tr><td>Bahan Bakar</td><td><?php echo $is_bbm; ?></td></tr>
 		<tr><td>Kupon</td><td><input type="text" name="kupon_bbm" id="kupon_bbm" disabled></td></tr>

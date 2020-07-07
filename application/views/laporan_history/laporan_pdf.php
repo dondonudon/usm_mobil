@@ -50,7 +50,6 @@ if (empty($tanggal_a) || empty($tanggal_b) || empty($id_karyawan)) {
             <td>Pengikut</td>
             <td>Tujuan</td>
             <td>Keterangan</td>
-            <td>Jenis</td>
             <td>Status</td>
         </tr>
         <?php
@@ -65,7 +64,6 @@ foreach ($query->result_array() as $data) {
             <td> <?php echo $data['pengikut']; ?></td>
             <td> <?php echo $data['tujuan']; ?></td>
             <td> <?php echo $data['keterangan']; ?></td>
-            <td> <?php echo $data['jenis']; ?></td>
             <td> <?php echo rename_string_status($data['status']); ?></td>
         </tr>
         <?php $no++?>

@@ -20,7 +20,6 @@
 		    <th>Pengikut</th>
 		    <th>Tujuan</th>
 		    <th>Keterangan</th>
-		    <th>Jenis</th>
 		    <th>Bbm</th>
             <th>Driver</th>
             <!-- <th>Status</th> -->
@@ -77,7 +76,7 @@
                         {
                             "data": "id",
                             "orderable": false
-                        },{"data": "notrans"},{"data": "nama"},{"data": "tanggal"},{"data": "pengikut"},{"data": "tujuan"},{"data": "keterangan"},{"data": "jenis"},{"data": "bbm"},{"data": "is_driver"},
+                        },{"data": "notrans"},{"data": "nama"},{"data": "tanggal"},{"data": "pengikut"},{"data": "tujuan"},{"data": "keterangan"},{"data": "bbm"},{"data": "is_driver"},
                         {
                             "data" : "action",
                             "orderable": false,

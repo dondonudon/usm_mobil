@@ -45,7 +45,6 @@ class Permohonan_atasan extends CI_Controller
                 'pengikut' => set_value('pengikut', $row->pengikut),
                 'tujuan' => set_value('tujuan', $row->tujuan),
                 'keterangan' => set_value('keterangan', $row->keterangan),
-                'jenis' => set_value('jenis', $row->jenis),
                 'bbm' => set_value('bbm', $row->bbm),
                 'is_driver' => set_value('is_driver', $row->is_driver),
                 'status' => set_value('status', $row->status),
