@@ -36,9 +36,8 @@ if ($is_driver == '1') {
 		<tr><td>Pakai Driver</td><td><?php echo $iss_driver; ?></td></tr>
 		<tr><td>Driver</td><td><?php echo $id_driver; ?></td></tr>
 		<tr><td>Jam Keluar</td><td><?php echo $keluar_jam; ?></td></tr>
-		<tr><td>Jam Masuk</td><td><input type="time" name="masuk_jam" id="masuk_jam"></td></tr>
-		<!-- <tr><td>Jam Masuk</td><td><input type="time" name="masuk_jam" id="masuk_jam"></td></tr> -->
-	    <!-- <tr><td>Datetime</td><td><?php echo $datetime; ?></td></tr> -->
+		<tr><td>Jam Masuk</td><td><input class="time" name="masuk_jam" id="masuk_jam" type="text" /></td></tr>
+
 		<input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_users']; ?>">
 	    <tr><td></td><td><input type="hidden" name="id" value="<?php echo $id; ?>" />
 	    <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> <?php echo $button ?></button>
@@ -46,3 +45,8 @@ if ($is_driver == '1') {
 	</table></form>        </div>
 </div>
 </div>
+<script src="<?php echo base_url() ?>assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery-clock-timepicker.min.js"></script>
+<script type="text/javascript">
+		$('.time').clockTimePicker();
+</script>
