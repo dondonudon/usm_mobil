@@ -170,6 +170,8 @@ class Permohonan_user extends CI_Controller
             'pengikut' => $this->input->post('pengikut', true),
             'tujuan' => $this->input->post('tujuan', true),
             'keterangan' => $this->input->post('keterangan', true),
+            'bbm' => $this->input->post('bbm', true),
+            'is_driver' => $this->input->post('is_driver', true),
             'id_user' => $this->input->post('id_user', true),
             'datetime' => date('Y-m-d H:i:s'),
         );
