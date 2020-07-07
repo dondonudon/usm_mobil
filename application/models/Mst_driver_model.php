@@ -37,6 +37,14 @@ class Mst_driver_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    // get excel
+    public function get_excel()
+    {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->where('aktif', 1);
+        return $this->db->get($this->table)->result();
+    }
+
     // get data by id
     public function get_by_id($id)
     {

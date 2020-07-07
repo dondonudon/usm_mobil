@@ -165,7 +165,7 @@ class Mst_karyawan extends CI_Controller
         xlsWriteLabel($tablehead, $kolomhead++, "Jabatan");
         xlsWriteLabel($tablehead, $kolomhead++, "Datetime");
 
-        foreach ($this->Mst_karyawan_model->get_all() as $data) {
+        foreach ($this->Mst_karyawan_model->get_excel() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric

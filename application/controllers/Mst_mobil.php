@@ -158,7 +158,7 @@ class Mst_mobil extends CI_Controller
         xlsWriteLabel($tablehead, $kolomhead++, "Mobil");
         xlsWriteLabel($tablehead, $kolomhead++, "Nopol");
 
-        foreach ($this->Mst_mobil_model->get_all() as $data) {
+        foreach ($this->Mst_mobil_model->get_excel() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric

@@ -151,7 +151,7 @@ class Mst_driver extends CI_Controller
         xlsWriteLabel($tablehead, $kolomhead++, "No");
         xlsWriteLabel($tablehead, $kolomhead++, "Nama");
 
-        foreach ($this->Mst_driver_model->get_all() as $data) {
+        foreach ($this->Mst_driver_model->get_excel() as $data) {
             $kolombody = 0;
 
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
