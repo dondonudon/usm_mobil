@@ -16,7 +16,6 @@
 	    <tr><td width='200'>Jumlah Pengikut <?php echo form_error('pengikut') ?></td><td><input type="text" class="form-control" name="pengikut" id="pengikut" placeholder="Pengikut" value="<?php echo $pengikut; ?>" /></td></tr>
 	    <tr><td width='200'>Tujuan <?php echo form_error('tujuan') ?></td><td><input type="text" class="form-control" name="tujuan" id="tujuan" placeholder="Tujuan" value="<?php echo $tujuan; ?>" /></td></tr>
 	    <tr><td width='200'>Keterangan <?php echo form_error('keterangan') ?></td><td><input type="text" class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" value="<?php echo $keterangan; ?>" /></td></tr>
-	    <tr><td width='200'>Jenis <?php echo form_error('jenis') ?></td><td><input type="text" class="form-control" name="jenis" id="jenis" placeholder="Jenis" value="<?php echo $jenis; ?>" /></td></tr>
 		<tr><td width='200'>Bahan Bakar <?php echo form_error('bbm') ?></td><td><input type="checkbox" name="bbm" id="bbm" value="1" value="<?php echo $bbm; ?>" /></td></tr>
 		<tr><td width='200'>Pakai Pengemudi <?php echo form_error('is_driver') ?></td><td><input type="checkbox" name="is_driver" id="is_driver" value="1" value="<?php echo $is_driver; ?>" /></td></tr>
 		<input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_users']; ?>">

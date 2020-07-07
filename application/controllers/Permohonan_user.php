@@ -68,7 +68,6 @@ class Permohonan_user extends CI_Controller
             'pengikut' => set_value('pengikut'),
             'tujuan' => set_value('tujuan'),
             'keterangan' => set_value('keterangan'),
-            'jenis' => set_value('jenis'),
             'bbm' => set_value('bbm'),
             'kupon_bbm' => set_value('kupon_bbm'),
             'id_mobil' => set_value('id_mobil'),
@@ -103,7 +102,6 @@ class Permohonan_user extends CI_Controller
                 'pengikut' => $this->input->post('pengikut', true),
                 'tujuan' => $this->input->post('tujuan', true),
                 'keterangan' => $this->input->post('keterangan', true),
-                'jenis' => $this->input->post('jenis', true),
                 'bbm' => $check_bbm,
                 'is_driver' => $check_driver,
                 // 'kupon_bbm' => $this->input->post('kupon_bbm', true),
@@ -137,7 +135,6 @@ class Permohonan_user extends CI_Controller
         $this->form_validation->set_rules('pengikut', 'pengikut', 'trim|required');
         $this->form_validation->set_rules('tujuan', 'tujuan', 'trim|required');
         $this->form_validation->set_rules('keterangan', 'keterangan', 'trim|required');
-        $this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
 
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
