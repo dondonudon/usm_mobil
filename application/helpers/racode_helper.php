@@ -89,6 +89,18 @@ function rename_string_status($string)
     return $status;
 }
 
+function rename_string_status_tolak($string)
+{
+    if ($string == '0') {
+        $status = 'Ditolak';
+    } elseif ($string == '1') {
+        $status = 'Menunggu Approve';
+    } else {
+        $status = '';
+    }
+    return $status;
+}
+
 function rename_string_status_mobil($string)
 {
     if ($string == '1') {

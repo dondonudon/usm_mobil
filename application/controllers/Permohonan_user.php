@@ -126,10 +126,64 @@ class Permohonan_user extends CI_Controller
         }
     }
 
+    public function update($id)
+    {
+        $row = $this->Permohonan_user_model->get_by_id($id);
+
+        if ($row) {
+            $data = array(
+                'button' => 'Save',
+                'action' => site_url('permohonan_user/update_action'),
+                'id' => set_value('id', $row->id),
+                'notrans' => set_value('notrans', $row->notrans),
+                'id_karyawan' => set_value('id_karyawan', $row->nama),
+                'jabatan' => set_value('jabatan', $row->jabatan),
+                'tanggal' => set_value('tanggal', $row->tanggal),
+                'pengikut' => set_value('pengikut', $row->pengikut),
+                'tujuan' => set_value('tujuan', $row->tujuan),
+                'keterangan' => set_value('keterangan', $row->keterangan),
+                'bbm' => set_value('bbm', $row->bbm),
+                'is_driver' => set_value('is_driver', $row->is_driver),
+                'status' => set_value('status', $row->status),
+                'datetime' => set_value('datetime', $row->datetime),
+            );
+            $this->template->load('template', 'permohonan_user/permohonan_user_update', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('permohonan_user'));
+        }
+    }
+
+    public function update_action()
+    {
+        // $this->_rules();
+
+        // $kupon_bbm = $this->input->post('kupon_bbm', true);
+        // $id_driver = $this->input->post('id_driver', true);
+
+        // $check_kupon = (isset($kupon_bbm)) ? $kupon_bbm : null;
+        // $check_driver = (isset($id_driver)) ? $id_driver : null;
+
+        $data = array(
+            'status' => 1,
+            'tanggal' => $this->input->post('tanggal', true),
+            'pengikut' => $this->input->post('pengikut', true),
+            'tujuan' => $this->input->post('tujuan', true),
+            'keterangan' => $this->input->post('keterangan', true),
+            'id_user' => $this->input->post('id_user', true),
+            'datetime' => date('Y-m-d H:i:s'),
+        );
+
+        $this->Permohonan_user_model->update($this->input->post('id', true), $data);
+        $this->session->set_flashdata('message', 'Update Record Success');
+        redirect(site_url('permohonan_user'));
+
+    }
+
     public function _rules()
     {
         $this->form_validation->set_rules('notrans', 'notrans', 'trim|required');
-        $this->form_validation->set_rules('id_karyawan', 'id karyawan', 'trim|required');
+        // $this->form_validation->set_rules('id_karyawan', 'id karyawan', 'trim|required');
         $this->form_validation->set_rules('tanggal', 'tanggal', 'trim|required');
         $this->form_validation->set_rules('pengikut', 'pengikut', 'trim|required');
         $this->form_validation->set_rules('tujuan', 'tujuan', 'trim|required');

@@ -26,13 +26,11 @@ class Permohonan_user_model extends CI_Model
         $this->datatables->from('permohonan');
         //add this line for join
         $this->datatables->join('mst_karyawan', 'permohonan.id_karyawan = mst_karyawan.id');
-        $this->datatables->where('status', 1);
+        $this->datatables->where('status <', 2);
         $this->datatables->add_column('bbm', '$1', 'rename_string_is_bbm(bbm)');
         $this->datatables->add_column('is_driver', '$1', 'rename_string_is_driver(is_driver)');
-        $this->datatables->add_column('status', '$1', 'rename_string_status(status)');
-        $this->datatables->add_column('action', anchor(site_url('permohonan/read/$1'), '<i class="fa fa-eye" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm')) . "
-            " . anchor(site_url('permohonan/update/$1'), '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm')) . "
-                " . anchor(site_url('permohonan/delete/$1'), '<i class="fa fa-trash-o" aria-hidden="true"></i>', 'class="btn btn-danger btn-sm" onclick="javasciprt: return confirm(\'Are You Sure ?\')"'), 'id');
+        $this->datatables->add_column('status', '$1', 'rename_string_status_tolak(status)');
+        $this->datatables->add_column('action', anchor(site_url('permohonan_user/update/$1'), '<i class="fa fa-pencil-square-o" aria-hidden="true"></i>', array('class' => 'btn btn-danger btn-sm')), 'id');
         return $this->datatables->generate();
     }
 
@@ -46,8 +44,14 @@ class Permohonan_user_model extends CI_Model
     // get data by id
     public function get_by_id($id)
     {
-        $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
+        $query = $this->db->select('permohonan.id, permohonan.notrans, permohonan.id_karyawan, permohonan.tanggal, permohonan.pengikut,
+        permohonan.tujuan, permohonan.keterangan, permohonan.bbm, permohonan.is_driver, permohonan.datetime,
+        permohonan.status, mst_karyawan.nama, mst_karyawan.jabatan')
+            ->from('permohonan')
+            ->join('mst_karyawan', 'permohonan.id_karyawan = mst_karyawan.id')
+            ->where('permohonan.id', $id)
+            ->get()->row();
+        return $query;
     }
 
     // get total rows

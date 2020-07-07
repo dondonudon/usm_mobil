@@ -23,9 +23,9 @@
 		    <th>Keterangan</th>
 		    <th>Bbm</th>
             <th>Driver</th>
-            <!-- <th>Status</th> -->
+            <th>Status</th>
 		    <!-- <th>Datetime</th> -->
-		    <!-- <th width="200px">Action</th> -->
+		    <th width="200px">Action</th>
                 </tr>
             </thead>
 
@@ -77,7 +77,12 @@
                         {
                             "data": "id",
                             "orderable": false
-                        },{"data": "notrans"},{"data": "nama"},{"data": "tanggal"},{"data": "pengikut"},{"data": "tujuan"},{"data": "keterangan"},{"data": "bbm"},{"data": "is_driver"}
+                        },{"data": "notrans"},{"data": "nama"},{"data": "tanggal"},{"data": "pengikut"},{"data": "tujuan"},{"data": "keterangan"},{"data": "bbm"},{"data": "is_driver"},{"data": "status"},
+                        {
+                            "data" : "action",
+                            "orderable": false,
+                            "className" : "text-center"
+                        }
                     ],
                     order: [[0, 'desc']],
                     rowCallback: function(row, data, iDisplayIndex) {
