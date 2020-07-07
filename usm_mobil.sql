@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 08, 2020 at 01:22 AM
+-- Generation Time: Jul 08, 2020 at 01:34 AM
 -- Server version: 8.0.20-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -369,7 +369,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `laporan_mobil`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laporan_mobil`  AS  select `mst_mobil`.`id` AS `id`,`mst_mobil`.`mobil` AS `mobil`,`mst_mobil`.`nopol` AS `nopol`,`permohonan`.`notrans` AS `notrans`,`permohonan`.`id_karyawan` AS `id_karyawan`,`permohonan`.`tanggal` AS `tanggal`,`permohonan`.`pengikut` AS `pengikut`,`permohonan`.`tujuan` AS `tujuan`,`permohonan`.`keterangan` AS `keterangan`,`permohonan`.`jenis` AS `jenis`,`permohonan`.`bbm` AS `bbm`,`permohonan`.`kupon_bbm` AS `kupon_bbm`,`permohonan`.`is_driver` AS `is_driver`,`permohonan`.`id_driver` AS `id_driver`,`permohonan`.`keluar_jam` AS `keluar_jam`,`permohonan`.`masuk_jam` AS `masuk_jam`,`permohonan`.`status` AS `status` from (`mst_mobil` left join `permohonan` on((`permohonan`.`id_mobil` = `mst_mobil`.`id`))) group by `mst_mobil`.`id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `laporan_mobil`  AS  select `mst_mobil`.`id` AS `id`,`mst_mobil`.`mobil` AS `mobil`,`mst_mobil`.`nopol` AS `nopol`,`permohonan`.`notrans` AS `notrans`,`permohonan`.`id_karyawan` AS `id_karyawan`,`permohonan`.`tanggal` AS `tanggal`,`permohonan`.`pengikut` AS `pengikut`,`permohonan`.`tujuan` AS `tujuan`,`permohonan`.`keterangan` AS `keterangan`,`permohonan`.`jenis` AS `jenis`,`permohonan`.`bbm` AS `bbm`,`permohonan`.`kupon_bbm` AS `kupon_bbm`,`permohonan`.`is_driver` AS `is_driver`,`permohonan`.`id_driver` AS `id_driver`,`permohonan`.`keluar_jam` AS `keluar_jam`,`permohonan`.`masuk_jam` AS `masuk_jam`,`permohonan`.`status` AS `status` from (`mst_mobil` left join `permohonan` on((`permohonan`.`id_mobil` = `mst_mobil`.`id`))) where (`mst_mobil`.`aktif` = 1) group by `mst_mobil`.`id` ;
 
 --
 -- Indexes for dumped tables
