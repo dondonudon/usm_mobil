@@ -113,6 +113,16 @@ class Permohonan_atasan_model extends CI_Model
         $this->db->update($this->table, $data);
     }
 
+    // cancel data
+    public function cancel($id)
+    {
+        $this->db->where($this->id, $id);
+        $data = array(
+            'status' => 9,
+        );
+        $this->db->update($this->table, $data);
+    }
+
     // delete data
     public function delete($id)
     {

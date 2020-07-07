@@ -35,8 +35,6 @@ class Permohonan_atasan extends CI_Controller
             $data = array(
                 'button' => 'Approve',
                 'action' => site_url('permohonan_atasan/update_action'),
-                'button1' => 'Cancel',
-                'action1' => site_url('permohonan_atasan/cancel'),
                 'id' => set_value('id', $row->id),
                 'notrans' => set_value('notrans', $row->notrans),
                 'id_karyawan' => set_value('id_karyawan', $row->nama),
@@ -74,6 +72,13 @@ class Permohonan_atasan extends CI_Controller
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('permohonan_atasan'));
         }
+    }
+
+    public function cancel($id)
+    {
+        $this->Permohonan_atasan_model->cancel($id);
+        redirect(site_url('permohonan_atasan'));
+
     }
 
     public function _rules()

@@ -32,10 +32,23 @@ if ($is_driver == '1') {
 		<tr><td>Pakai Driver</td><td><?php echo $iss_driver; ?></td></tr>
 	    <!-- <tr><td>Datetime</td><td><?php echo $datetime; ?></td></tr> -->
 		<input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_users']; ?>">
-	    <tr><td></td><td><input type="hidden" name="id" value="<?php echo $id; ?>" />
+	    <tr><td></td><td><input type="hidden" id="id" name="id" value="<?php echo $id; ?>" />
 	    <button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> <?php echo $button ?></button>
-		<button type="submit" class="btn btn-danger"><i class="fa fa-floppy-o"></i> <?php echo $button1 ?></button>
+
+		<button type="button" class="btn btn-warning" onclick="cancel()"></i>Cancel </button>
 	    <a href="<?php echo site_url('permohonan_atasan') ?>" class="btn btn-info"><i class="fa fa-sign-out"></i> Kembali</a></td></tr>
 	</table></form>        </div>
 </div>
 </div>
+
+<script>
+function cancel(){
+	var id = $("#id").val();
+	if (confirm("Apakah anda yakin ?")) {
+		window.location.href = '../cancel/'+id;
+		// window.location = 'cancel';
+	}else{
+		return false;
+	}
+}
+</script>
