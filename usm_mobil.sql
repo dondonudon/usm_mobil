@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 06, 2020 at 03:39 AM
+-- Generation Time: Jul 08, 2020 at 01:22 AM
 -- Server version: 8.0.20-0ubuntu0.20.04.1
 -- PHP Version: 7.4.3
 
@@ -38,7 +38,7 @@ CREATE TABLE `counter` (
 --
 
 INSERT INTO `counter` (`id`, `counter`) VALUES
-('A', 2);
+('A', 9);
 
 -- --------------------------------------------------------
 
@@ -47,31 +47,31 @@ INSERT INTO `counter` (`id`, `counter`) VALUES
 -- (See below for the actual view)
 --
 CREATE TABLE `laporan_history` (
-`id` int
-,`notrans` varchar(20)
-,`id_karyawan` int
-,`nama_karyawan` varchar(50)
-,`tanggal` date
-,`pengikut` int
-,`tujuan` varchar(100)
-,`keterangan` varchar(100)
-,`jenis` varchar(20)
-,`bbm` int
-,`kupon_bbm` varchar(20)
-,`id_mobil` int
-,`status` int
-,`mobil` varchar(20)
-,`nopol` varchar(20)
-,`is_driver` int
+`bbm` int
+,`id` int
 ,`id_driver` int
-,`nama_driver` varchar(50)
+,`id_karyawan` int
+,`id_mobil` int
+,`is_driver` int
+,`jenis` varchar(20)
 ,`keluar_jam` time
+,`keterangan` varchar(100)
+,`kupon_bbm` varchar(20)
 ,`masuk_jam` time
-,`nama_user` varchar(50)
-,`nama_atasan` varchar(50)
+,`mobil` varchar(20)
 ,`nama_admin` varchar(50)
-,`nama_spv` varchar(50)
+,`nama_atasan` varchar(50)
+,`nama_driver` varchar(50)
+,`nama_karyawan` varchar(50)
 ,`nama_security` varchar(50)
+,`nama_spv` varchar(50)
+,`nama_user` varchar(50)
+,`nopol` varchar(20)
+,`notrans` varchar(20)
+,`pengikut` int
+,`status` int
+,`tanggal` date
+,`tujuan` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -81,23 +81,23 @@ CREATE TABLE `laporan_history` (
 -- (See below for the actual view)
 --
 CREATE TABLE `laporan_mobil` (
-`id` int
+`bbm` int
+,`id` int
+,`id_driver` int
+,`id_karyawan` int
+,`is_driver` int
+,`jenis` varchar(20)
+,`keluar_jam` time
+,`keterangan` varchar(100)
+,`kupon_bbm` varchar(20)
+,`masuk_jam` time
 ,`mobil` varchar(20)
 ,`nopol` varchar(20)
 ,`notrans` varchar(20)
-,`id_karyawan` int
-,`tanggal` date
 ,`pengikut` int
-,`tujuan` varchar(100)
-,`keterangan` varchar(100)
-,`jenis` varchar(20)
-,`bbm` int
-,`kupon_bbm` varchar(20)
-,`is_driver` int
-,`id_driver` int
-,`keluar_jam` time
-,`masuk_jam` time
 ,`status` int
+,`tanggal` date
+,`tujuan` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -133,7 +133,7 @@ CREATE TABLE `mst_karyawan` (
   `nama` varchar(50) COLLATE utf8_bin NOT NULL,
   `jabatan` varchar(50) COLLATE utf8_bin NOT NULL,
   `aktif` int DEFAULT '1',
-  `datetime` datetime DEFAULT CURRENT_TIMESTAMP
+  `datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
@@ -141,9 +141,8 @@ CREATE TABLE `mst_karyawan` (
 --
 
 INSERT INTO `mst_karyawan` (`id`, `nama`, `jabatan`, `aktif`, `datetime`) VALUES
-(5, 'karyawan1', 'staff', 1, NULL),
-(6, 'karyawan2', 'staff', 1, NULL),
-(7, 'karyawan3', 'staff', 1, NULL);
+(8, 'karyawan1', 'staff', 1, '2020-07-07 15:40:19'),
+(9, 'karyawan2', 'staff', 1, '2020-07-07 15:40:19');
 
 -- --------------------------------------------------------
 
@@ -166,7 +165,7 @@ CREATE TABLE `mst_mobil` (
 INSERT INTO `mst_mobil` (`id`, `mobil`, `nopol`, `aktif`, `datetime`) VALUES
 (4, 'mobil1', 'H 1111 HH', 1, '2020-07-06 03:21:15'),
 (5, 'mobil2', 'H 2222 HH', 1, '2020-07-06 03:21:23'),
-(6, 'mobil3', 'H 3333 HH', 1, '2020-07-06 03:21:32');
+(6, 'mobil3', 'H 3333 HH', 0, '2020-07-06 03:21:32');
 
 -- --------------------------------------------------------
 
@@ -182,7 +181,7 @@ CREATE TABLE `permohonan` (
   `pengikut` int NOT NULL,
   `tujuan` varchar(100) COLLATE utf8_bin NOT NULL,
   `keterangan` varchar(100) COLLATE utf8_bin NOT NULL,
-  `jenis` varchar(20) COLLATE utf8_bin NOT NULL,
+  `jenis` varchar(20) CHARACTER SET utf8 COLLATE utf8_bin DEFAULT NULL,
   `bbm` int NOT NULL,
   `kupon_bbm` varchar(20) COLLATE utf8_bin DEFAULT NULL,
   `id_mobil` int DEFAULT NULL,
@@ -201,14 +200,6 @@ CREATE TABLE `permohonan` (
   `cancel_date` datetime DEFAULT NULL,
   `datetime` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `permohonan`
---
-
-INSERT INTO `permohonan` (`id`, `notrans`, `id_karyawan`, `tanggal`, `pengikut`, `tujuan`, `keterangan`, `jenis`, `bbm`, `kupon_bbm`, `id_mobil`, `is_driver`, `id_driver`, `keluar_jam`, `masuk_jam`, `status`, `id_user`, `id_atasan`, `id_admin`, `id_spv`, `id_security`, `cancel_id`, `cancel_alasan`, `cancel_date`, `datetime`) VALUES
-(8, 'A2020070001', 5, '2020-07-06', 4, 'tujuan', 'keterangan', 'jenis', 1, 'kupon1', 4, 1, 1, NULL, NULL, 3, 2, 3, 4, NULL, NULL, NULL, NULL, NULL, '2020-07-06 03:32:11'),
-(9, 'A2020070002', 6, '2020-07-06', 4, '-', '-', '-', 0, NULL, NULL, 1, NULL, NULL, NULL, 2, 2, 3, NULL, NULL, NULL, NULL, NULL, NULL, '2020-07-06 03:29:33');
 
 -- --------------------------------------------------------
 
@@ -245,8 +236,10 @@ INSERT INTO `tbl_hak_akses` (`id`, `id_user_level`, `id_menu`) VALUES
 (16, 3, 15),
 (17, 5, 13),
 (18, 5, 15),
-(19, 6, 14),
-(20, 6, 15);
+(20, 6, 15),
+(21, 6, 19),
+(22, 6, 20),
+(23, 6, 14);
 
 -- --------------------------------------------------------
 
@@ -286,7 +279,9 @@ INSERT INTO `tbl_menu` (`id_menu`, `title`, `url`, `icon`, `is_main_menu`, `urut
 (15, 'Monitor', 'monitor', 'fa fa-tachometer', 0, 1, 'y'),
 (16, 'Laporan', '#', 'fa fa-area-chart', 0, 3, 'y'),
 (17, 'Laporan Mobil', 'laporan_mobil', 'fa fa-area-chart', 16, 1, 'y'),
-(18, 'Laporan History', 'laporan_history', 'fa fa-area-chart', 16, 2, 'y');
+(18, 'Laporan History', 'laporan_history', 'fa fa-area-chart', 16, 2, 'y'),
+(19, 'Jam Masuk', 'permohonan_security/jam_masuk', 'fa fa-angle-double-left', 14, 2, 'y'),
+(20, 'Jam Keluar', 'permohonan_security/jam_keluar', 'fa fa-angle-double-right', 14, 1, 'y');
 
 -- --------------------------------------------------------
 
@@ -455,7 +450,7 @@ ALTER TABLE `mst_driver`
 -- AUTO_INCREMENT for table `mst_karyawan`
 --
 ALTER TABLE `mst_karyawan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `mst_mobil`
@@ -467,19 +462,19 @@ ALTER TABLE `mst_mobil`
 -- AUTO_INCREMENT for table `permohonan`
 --
 ALTER TABLE `permohonan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_hak_akses`
 --
 ALTER TABLE `tbl_hak_akses`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `tbl_menu`
 --
 ALTER TABLE `tbl_menu`
-  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `id_menu` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `tbl_setting`
