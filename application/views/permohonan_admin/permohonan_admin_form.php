@@ -43,7 +43,7 @@ if ($is_driver == '1') {
 	</table></form>        </div>
 </div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="<?php echo base_url() ?>assets/js/jquery-2.1.1.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
