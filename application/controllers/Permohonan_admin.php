@@ -12,6 +12,8 @@ class Permohonan_admin extends CI_Controller
         $this->session->set_flashdata('title', 'Permohonan Admin| PT PLN');
         is_login();
         $this->load->model('Permohonan_admin_model');
+        $this->load->model('Mst_mobil_model');
+        $this->load->model('Mst_driver_model');
         $this->load->library('form_validation');
         $this->load->library('datatables');
     }
@@ -78,6 +80,11 @@ class Permohonan_admin extends CI_Controller
             );
 
             $this->Permohonan_admin_model->update($this->input->post('id', true), $data);
+            // USED ID
+            $this->Mst_mobil_model->used($this->input->post('id_mobil', true));
+            if (isset($check_driver)) {
+                $this->Mst_driver_model->used($check_driver);
+            }
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('permohonan_admin'));
         }

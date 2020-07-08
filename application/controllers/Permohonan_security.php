@@ -12,6 +12,8 @@ class Permohonan_security extends CI_Controller
         $this->session->set_flashdata('title', 'Permohonan Security| PT PLN');
         is_login();
         $this->load->model('Permohonan_security_model');
+        $this->load->model('Mst_mobil_model');
+        $this->load->model('Mst_driver_model');
         $this->load->library('form_validation');
         $this->load->library('datatables');
     }
@@ -143,6 +145,12 @@ class Permohonan_security extends CI_Controller
             );
 
             $this->Permohonan_security_model->update($this->input->post('id', true), $data);
+            // UNUSED ID
+            $row = $this->Permohonan_security_model->get_by_id2($this->input->post('id', true));
+            $this->Mst_mobil_model->unused($row->mobil_id);
+            if (isset($row->driver_id)) {
+                $this->Mst_driver_model->unused($row->driver_id);
+            }
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('permohonan_security/jam_masuk'));
         }

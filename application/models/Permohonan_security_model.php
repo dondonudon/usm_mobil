@@ -79,6 +79,18 @@ class Permohonan_security_model extends CI_Model
         return $query;
     }
 
+    // get data by id
+    public function get_by_id2($id)
+    {
+        $query = $this->db->select('permohonan.id as permohonan_id, mst_mobil.id as mobil_id, mst_driver.id as driver_id')
+            ->from('permohonan')
+            ->join('mst_mobil', 'permohonan.id_mobil = mst_mobil.id')
+            ->join('mst_driver', 'permohonan.id_driver = mst_driver.id', 'left')
+            ->where('permohonan.id', $id)
+            ->get()->row();
+        return $query;
+    }
+
     // get total rows
     public function total_rows($q = null)
     {

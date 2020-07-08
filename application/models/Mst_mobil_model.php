@@ -96,6 +96,26 @@ class Mst_mobil_model extends CI_Model
         $this->db->update($this->table, $data);
     }
 
+    // used data
+    public function used($id)
+    {
+        $this->db->where($this->id, $id);
+        $data = array(
+            'used' => 0,
+        );
+        $this->db->update($this->table, $data);
+    }
+
+    // unused data
+    public function unused($id)
+    {
+        $this->db->where($this->id, $id);
+        $data = array(
+            'used' => 1,
+        );
+        $this->db->update($this->table, $data);
+    }
+
 }
 
 /* End of file Mst_mobil_model.php */

@@ -43,6 +43,21 @@ function select2_dinamis_id($name, $table, $field, $pk, $placeholder, $where, $i
     return $select2;
 }
 
+function select2_dinamis_2id($name, $table, $field, $pk, $placeholder, $where, $id, $where2, $id2)
+{
+    $ci = get_instance();
+    $select2 = '<select id="' . $name . '" name="' . $name . '" class="form-control select2 select2-hidden-accessible" data-placeholder="' . $placeholder . '" style="width: 100%;" tabindex="-1" aria-hidden="true" required>';
+    $ci->db->where($where, $id);
+    $ci->db->where($where2, $id2);
+    $data = $ci->db->get($table)->result();
+    $select2 .= ' <option></option>';
+    foreach ($data as $row) {
+        $select2 .= ' <option value=' . $row->$pk . '>' . $row->$field . '</option>';
+    }
+    $select2 .= '</select>';
+    return $select2;
+}
+
 function datalist_dinamis($name, $table, $field, $value = null)
 {
     $ci = get_instance();

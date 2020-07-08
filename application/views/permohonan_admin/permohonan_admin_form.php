@@ -30,11 +30,11 @@ if ($is_driver == '1') {
 	    <tr><td>Pengikut</td><td><?php echo $pengikut; ?></td></tr>
 	    <tr><td>Tujuan</td><td><?php echo $tujuan; ?></td></tr>
 	    <tr><td>Keterangan</td><td><?php echo $keterangan; ?></td></tr>
-		<tr><td>Mobil</td><td><?php echo select2_dinamis_id('id_mobil', 'mst_mobil', 'nopol', 'id', 'Mobil', 'aktif', 1) ?></td></tr>
+		<tr><td>Mobil</td><td><?php echo select2_dinamis_2id('id_mobil', 'mst_mobil', 'nopol', 'id', 'Mobil', 'aktif', 1, 'used', 1) ?></td></tr>
 		<tr><td>Bahan Bakar</td><td><?php echo $is_bbm; ?></td></tr>
 		<tr><td>Kupon</td><td><input type="text" name="kupon_bbm" id="kupon_bbm" disabled></td></tr>
 		<tr><td>Pakai Driver</td><td><?php echo $iss_driver; ?></td></tr>
-		<tr><td>Driver</td><td><?php echo select2_dinamis_id('id_driver', 'mst_driver', 'nama', 'id', 'Driver', 'aktif', 1) ?></td></tr>
+		<tr><td>Driver</td><td><?php echo select2_dinamis_2id('id_driver', 'mst_driver', 'nama', 'id', 'Driver', 'aktif', 1, 'used', 1) ?></td></tr>
 	    <!-- <tr><td>Datetime</td><td><?php echo $datetime; ?></td></tr> -->
 		<input type="hidden" name="id_user" id="id_user" value="<?php echo $_SESSION['id_users']; ?>">
 	    <tr><td></td><td><input type="hidden" name="id" value="<?php echo $id; ?>" />
