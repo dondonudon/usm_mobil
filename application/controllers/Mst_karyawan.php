@@ -35,7 +35,6 @@ class Mst_karyawan extends CI_Controller
                 'id' => $row->id,
                 'nama' => $row->nama,
                 'jabatan' => $row->jabatan,
-                'datetime' => $row->datetime,
             );
             $this->template->load('template', 'mst_karyawan/mst_karyawan_read', $data);
         } else {
@@ -52,7 +51,6 @@ class Mst_karyawan extends CI_Controller
             'id' => set_value('id'),
             'nama' => set_value('nama'),
             'jabatan' => set_value('jabatan'),
-            'datetime' => set_value('datetime'),
         );
         $this->template->load('template', 'mst_karyawan/mst_karyawan_form', $data);
     }
@@ -67,7 +65,6 @@ class Mst_karyawan extends CI_Controller
             $data = array(
                 'nama' => $this->input->post('nama', true),
                 'jabatan' => $this->input->post('jabatan', true),
-                'datetime' => $this->input->post('datetime', true),
             );
 
             $this->Mst_karyawan_model->insert($data);
@@ -87,7 +84,6 @@ class Mst_karyawan extends CI_Controller
                 'id' => set_value('id', $row->id),
                 'nama' => set_value('nama', $row->nama),
                 'jabatan' => set_value('jabatan', $row->jabatan),
-                'datetime' => set_value('datetime', $row->datetime),
             );
             $this->template->load('template', 'mst_karyawan/mst_karyawan_form', $data);
         } else {
@@ -106,7 +102,6 @@ class Mst_karyawan extends CI_Controller
             $data = array(
                 'nama' => $this->input->post('nama', true),
                 'jabatan' => $this->input->post('jabatan', true),
-                'datetime' => $this->input->post('datetime', true),
             );
 
             $this->Mst_karyawan_model->update($this->input->post('id', true), $data);
@@ -133,7 +128,6 @@ class Mst_karyawan extends CI_Controller
     {
         $this->form_validation->set_rules('nama', 'nama', 'trim|required');
         $this->form_validation->set_rules('jabatan', 'jabatan', 'trim|required');
-        // $this->form_validation->set_rules('datetime', 'datetime', 'trim|required');
 
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -163,7 +157,6 @@ class Mst_karyawan extends CI_Controller
         xlsWriteLabel($tablehead, $kolomhead++, "No");
         xlsWriteLabel($tablehead, $kolomhead++, "Nama");
         xlsWriteLabel($tablehead, $kolomhead++, "Jabatan");
-        xlsWriteLabel($tablehead, $kolomhead++, "Datetime");
 
         foreach ($this->Mst_karyawan_model->get_excel() as $data) {
             $kolombody = 0;
@@ -172,7 +165,6 @@ class Mst_karyawan extends CI_Controller
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
             xlsWriteLabel($tablebody, $kolombody++, $data->nama);
             xlsWriteLabel($tablebody, $kolombody++, $data->jabatan);
-            xlsWriteLabel($tablebody, $kolombody++, $data->datetime);
 
             $tablebody++;
             $nourut++;
