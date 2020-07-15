@@ -11,7 +11,7 @@ class Laporan_mobil_model extends CI_Model
     public $id = 'id';
 
     //var $table = 'customers';
-    public $column_order = array('po.datetime'); //set column field database for datatable orderable
+    public $column_order = array('id','mobil','nopol','masuk_jam','keluar_jam','status'); //set column field database for datatable orderable
     public $column_search = array('ket', 'tanggal'); //set column field database for datatable searchable
     //var $order = array('id' => 'asc'); // default order
     //public $order = 'DESC';
